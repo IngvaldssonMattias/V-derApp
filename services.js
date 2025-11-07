@@ -1,7 +1,7 @@
 import { createCordinatesURL, createTemperatureURL } from "./url.js";
 import { weatherCodes } from "./weatherCodes.js";
 
-export async function getCityCordinates(city) {
+export async function getWeatherFromCity(city) {
   const response = await fetch(createCordinatesURL(city));
   if (!response.ok)
     throw new Error(console.log("Got HTTP-error ", response.status));
@@ -10,23 +10,22 @@ export async function getCityCordinates(city) {
   let latitude = data.results[0].latitude;
   let longitude = data.results[0].longitude;
 
-  getTemperature(latitude,longitude, city)
+  return await getTemperature(latitude,longitude, city)
 
 }
-
-export async function getTemperature(lat, lon, city) {
+async function getTemperature(lat, lon, city) {
   const response = await fetch(createTemperatureURL(lat, lon));
   if (!response.ok)
     throw new Error(console.log("Got HTTP-error ", response.status));
   const data = await response.json();
-  console.log(data)
+
     const weatherData = {
+        city: city,
         temperature: data.current.temperature_2m,
-        weatherCode: data.current.weather_code,
+        weather: weatherCodes[data.current.weather_code],
         time: data.current.time,
         timeZone: data.timezone }
 
-  console.log(`Today at ${time} ${timeZone} in ${city[0].toUpperCase()+city.slice(1)} the temperature is ${temperature} degrees celsius and the weather is ${weatherCodes[weatherCode].toLowerCase()}`)
-
+  //console.log(`Today at ${time} ${timeZone} in ${city[0].toUpperCase()+city.slice(1)} the temperature is ${temperature} degrees celsius and the weather is ${weatherCodes[weatherCode].toLowerCase()}`)
   return weatherData 
 }
