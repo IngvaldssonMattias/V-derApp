@@ -20,7 +20,7 @@ export async function getTemperature(lat, lon, city) {
     throw new Error(console.log("Got HTTP-error ", response.status));
   const data = await response.json();
   console.log(data)
-    const weatherData {
+    const weatherData = {
         temperature: data.current.temperature_2m,
         weatherCode: data.current.weather_code,
         time: data.current.time,
