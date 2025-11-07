@@ -3,5 +3,5 @@ export function createCordinatesURL(city) {
 }
 
 export function createTemperatureURL(lat, lon){
-    return `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,weather_code`
+    return `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`
 }

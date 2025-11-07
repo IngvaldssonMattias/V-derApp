@@ -1,4 +1,4 @@
-import { getCityCordinates } from "./services.js";
+import { getCityCordinates, getTemperature } from "./services.js";
 
 
 const searchButton = document.getElementById('search-button');
@@ -9,3 +9,4 @@ searchButton.addEventListener('click', () => {
     console.log(`Söker väder för stad: ${city}`);
     getCityCordinates(city)
 });
+
