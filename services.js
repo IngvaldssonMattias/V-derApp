@@ -26,6 +26,6 @@ async function getTemperature(lat, lon, city) {
         time: data.current.time,
         timeZone: data.timezone }
 
-  //console.log(`Today at ${time} ${timeZone} in ${city[0].toUpperCase()+city.slice(1)} the temperature is ${temperature} degrees celsius and the weather is ${weatherCodes[weatherCode].toLowerCase()}`)
+
   return weatherData 
 }
